@@ -1232,7 +1232,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1000px;
   }
   .col-lg-1,
   .col-lg-2,
@@ -4375,6 +4375,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+  opacity: 0.8;
 }
 
 .navbar-default .navbar-brand {
@@ -4522,7 +4523,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #080808;
+  background-color: #8b1f14;
 }
 
 .navbar-inverse .navbar-nav > .disabled > a,

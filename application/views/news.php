@@ -1,1 +1,7 @@
-<a href='<?php echo $logout_url; ?>'>Logout</a>
+<div class="row">
+<div class="col col-lg-12">
+sfsdf
+
+</div>
+
+</div>
