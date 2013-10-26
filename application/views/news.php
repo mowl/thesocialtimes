@@ -45,57 +45,6 @@
 </div>
 
 <script>
-    var cSpeed = 8;
-    var cWidth = 142;
-    var cHeight = 142;
-    var cTotalFrames = 30;
-    var cFrameWidth = 142;
-    var cImageSrc = 'img/sprites.png';
-
-    var cImageTimeout = false;
-    var cIndex = 0;
-    var cXpos = 0;
-    var cPreloaderTimeout = false;
-    var SECONDS_BETWEEN_FRAMES = 0;
-
-    function startAnimation() {
-
-        document.getElementById('loaderImage').style.backgroundImage = 'url(' + cImageSrc + ')';
-        document.getElementById('loaderImage').style.width = cWidth + 'px';
-        document.getElementById('loaderImage').style.height = cHeight + 'px';
-
-        //FPS = Math.round(100/(maxSpeed+2-speed));
-        FPS = Math.round(100 / cSpeed);
-        SECONDS_BETWEEN_FRAMES = 1 / FPS;
-
-        cPreloaderTimeout = setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES / 1000);
-
-    }
-    
-    if(document.getElementById('loaderImage'))
-      document.getElementById('loaderImage').style.backgroundPosition=(-cXpos)+'px 0';
-    
-    cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES*1000);
-  }
-  
-  function stopAnimation(){//stops animation
-    clearTimeout(cPreloaderTimeout);
-    cPreloaderTimeout=false;
-  }
-  
-  function imageLoader(s, fun)//Pre-loads the sprites image
-  {
-    clearTimeout(cImageTimeout);
-    cImageTimeout=0;
-    genImage = new Image();
-    genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
-    genImage.onerror=new Function('alert(\'Could not load the image\')');
-    genImage.src=s;
-  }
-  
-  
-  //The following code starts the animation
-  new imageLoader(cImageSrc, 'startAnimation()');
     var urls = <?php echo json_encode($urls); ?>;
     var config = {base_url: "<?php echo base_url(); ?>"};
 </script>
