@@ -130,7 +130,10 @@ class News extends CI_Controller {
             }
             
             $data = array('articles' => $articles_info);
+            $this->load->view('templates/header');
             $this->load->view('news', $data);
+             $this->load->view('templates/footer');
+
         }
     }
 

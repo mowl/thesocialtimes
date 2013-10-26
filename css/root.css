@@ -43,12 +43,28 @@ body {
 		font-family: 'canterburyregular' ;
 		font-size: 90px;
 		text-align: right;
+		
 
 		margin-top:0px;
 
 
 
 
+
+}
+.loadingfeest {
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 800;
+color: #fff;
+
+}
+.loader {
+	padding-top: 50px;
+	
+	font-family: Verdana, sans-serif;
+	
 
 }
 .sharepic {
