@@ -1,6 +1,5 @@
 </div>
 
-
 </div>
 <!-- include jQuery -->
 <script src="libs/jquery.min.js"></script>

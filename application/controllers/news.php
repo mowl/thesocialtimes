@@ -80,7 +80,11 @@ class News extends CI_Controller {
 
                 if (!$this->is_blacklisted_url($resolved)) {
 
-                    array_push($res, $resolved);
+                    $o = new stdClass();
+                    $o->resolved = $resolved;
+                    $o->to_resolve = $m;
+                    
+                    array_push($res, $o);
                     $i++;
                 }
             }
@@ -89,7 +93,7 @@ class News extends CI_Controller {
         $articles_info = array();
 
         foreach ($res as $article) {
-            $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article) . '&maxwidth=500&maxheight=700&format=json';
+            $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article->resolved) . '&maxwidth=500&maxheight=700&format=json';
             $data = @file_get_contents($url);
             if (!$data)
                 continue;
@@ -100,7 +104,7 @@ class News extends CI_Controller {
             else
                 $json->random_height = '' . rand(100, 300) . 'px';
             
-            $json->origin = $article;
+            $json->to_resolve = $article->to_resolve;
             
             array_push($articles_info, $json);
         }
@@ -123,8 +127,10 @@ class News extends CI_Controller {
             $this->load->library('twitteroauth', $cfg);
 
             $access_token = @$this->twitteroauth->getAccessToken($_REQUEST['oauth_verifier']);
+            
             $urls = array();
-
+            $extra_info = array();
+            
             if ($access_token) {
                 $params = array();
                 $params['include_entities'] = 0;
@@ -143,6 +149,15 @@ class News extends CI_Controller {
 
                             if (count($matches) && (count($matches[0]) == 1)) {
                                 $m = $matches[0][0];
+                            
+                                $o = new stdClass();
+                                
+                                $o->name = $tweet->user->name;
+                                $o->location = $tweet->user->location;
+                                $o->profile_picture = $tweet->user->profile_image_url;
+                                
+                                $extra_info[$m] = $o;
+                            
                                 array_push($urls, $m);
                             }
                         }
@@ -151,10 +166,9 @@ class News extends CI_Controller {
                     // Re-authenticate
                     redirect('home');
                 }
-            } 
-            
+            }
 
-            $data = array('urls' => $urls);
+            $data = array('urls' => $urls, 'extra_info' => $extra_info);
             $this->load->view('templates/header');
             $this->load->view('news', $data);
             $this->load->view('templates/footer');
