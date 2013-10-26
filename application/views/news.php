@@ -14,9 +14,10 @@
 
 					<ul id="tiles">
 					  <li ng-repeat="art in articles">
+					     <p style="font-weight:bold;">{{art.title}}</p>
 					  <img ng-src="{{art.images[0].url}}">
 
-        <p style="font-weight:bold;">{{art.title}}</p>
+     
         <p style="font-size:11px;padding-right:5px">{{art.description}}</p>
         <p style="font-weight:300;font-size:11px;">Shared by </p>
          <p class="tooltip-demo" style="margin-bottom:50px"><img data-toggle="tooltip" title="Fritz Hoste" src="img/profilepic.jpg" style="float:left;width:30px;" />
