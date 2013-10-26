@@ -39,7 +39,7 @@ class News extends CI_Controller {
     }
 
     private $_blacklist = array(
-        't', 'twitter', 'instagram', 'facebook', 'fb', 'pinterest', 'tinyurl', 'tumblr', 'linkedin', 'dribbble'
+        't', 'twitter', 'instagram', 'facebook', 'fb', 'pinterest', '9gag', 'tinyurl', 'tumblr', 'linkedin', 'dribbble'
     );
 
     private function is_blacklisted_url($url) {
@@ -71,7 +71,7 @@ class News extends CI_Controller {
 
         $i = 0;
         foreach ($urls as $m) {
-            if ($i == 2)
+            if ($i == 10)
                 break;
 
             if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {

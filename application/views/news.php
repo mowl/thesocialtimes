@@ -13,21 +13,26 @@
 				<div id="main" role="main">
 
 					<ul id="tiles">
-					
-						 <li ng-repeat="art in articles">
-						<!--  <img ng-src="{{art.images[0].url}}"> -->
-						 <img src="http://1.nieuwsbladcdn.be/Assets/Images_Upload/2013/10/26/dc6d4eec-3e4d-11e3-9669-9545efcb0958_web_scale_0.1855469_0.1855469__.jpg.h380.jpg">
-						 qsdfsdfqsdfds
+					  <li ng-repeat="art in articles">
+					  <img ng-src="{{art.images[0].url}}">
 
-							
-					</li>
+        <p style="font-weight:bold;">{{art.title}}</p>
+        <p style="font-size:11px;padding-right:5px">{{art.description}}</p>
+        <p style="font-weight:300;font-size:11px;">Shared by </p>
+         <p class="tooltip-demo" style="margin-bottom:50px"><img data-toggle="tooltip" title="Fritz Hoste" src="img/profilepic.jpg" style="float:left;width:30px;" />
+         </p>
+            <hr style="width:102%;margin-top:20px;margin-bottom:0px;margin-left:-5px" />
+             <a ng-href="{{art.original_url}}"><p style="margin-bottom:5px;"><img src="{{art.favicon_url}}" style="width:15px;float:left"> 
+                <span style="color:#b3b3b3;padding-left:10px;font-size:10px">{{art.provider_name}}</span></p></a>   
+        </li>
+						
 
 					</ul>
 
 				</div>
 
 			</div>
-			<pre>{{articles | json}}</pre>
+		<!-- 	<pre>{{articles | json}}</pre> -->
 		</div>
 	</div>
 

@@ -16,7 +16,7 @@ class Home extends CI_Controller {
         $callback = str_replace('/home/link_twitter', '', $callback);
         
         $fritz = true;
-        $url = ($fritz) ? 'http://localhost:8080/thesocialtimes' : 'http://' . $callback . '/news';
+        $url = ($fritz) ? 'http://localhost:8080/thesocialtimes/news' : 'http://' . $callback . '/news';
         
         $request_token = $this->twitteroauth->getRequestToken($url); //get Request Token
 
