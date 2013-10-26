@@ -100,6 +100,7 @@
     genImage.src=s;
   }
   
+  
   //The following code starts the animation
   new imageLoader(cImageSrc, 'startAnimation()');
     var urls = <?php echo json_encode($urls); ?>;
