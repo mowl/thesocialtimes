@@ -9,8 +9,10 @@ class Home extends CI_Controller {
         $this->load->library('facebook', array('appId' => $this->config->item('fb_key'), 'secret' => $this->config->item('fb_secret')));
 
         $user = $this->facebook->getUser();
+
         if ($user) {
             try {
+                $this->facebook->api('/me');
                 redirect('news');
             } catch (FacebookApiException $e) {
                 $user = null;
