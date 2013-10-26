@@ -14,7 +14,7 @@
  */
 #tiles li {
   width: 200px;
-  background-color: #ffffff;
+background: rgba(255,255,255,0.7)
   border: 1px solid #dedede;
           border-radius: 2px;
      -moz-border-radius: 2px;
