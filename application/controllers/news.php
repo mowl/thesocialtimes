@@ -98,7 +98,7 @@ class News extends CI_Controller {
 
                             if (count($matches) && (count($matches[0]) == 1)) {
                                 $m = $matches[0][0];
-                                if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
+                                /*if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
                                     
                                     $resolved = $this->resolve_url($m);
 
@@ -108,7 +108,7 @@ class News extends CI_Controller {
                                         
                                         $i++;
                                     }
-                                }
+                                }*/
                             }
                         }
                     }
