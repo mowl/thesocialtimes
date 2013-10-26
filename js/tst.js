@@ -1,6 +1,7 @@
 function TheSocialTimes($scope, $http) {
 
     $scope.urls = urls;
+    
     $scope.init = function() {
 
         var url = config.base_url + 'news/resolve';
@@ -36,6 +37,7 @@ function TheSocialTimes($scope, $http) {
         });
 
         request.fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
             console.error("Ajax Error: " + textStatus, errorThrown);
         });
 

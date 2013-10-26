@@ -71,7 +71,7 @@ class News extends CI_Controller {
 
         $i = 0;
         foreach ($urls as $m) {
-            if ($i == 2)
+            if ($i == 15)
                 break;
 
             if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
@@ -90,11 +90,19 @@ class News extends CI_Controller {
 
         foreach ($res as $article) {
             $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article) . '&maxwidth=500&maxheight=700&format=json';
-            $json = json_decode(file_get_contents($url));
+            $data = @file_get_contents($url);
+            if (!$data)
+                continue;
+            $json = json_decode($data);
 
+            if (!isset($json->images[0]))
+                $json->random_height = '0px';
+            else
+                $json->random_height = '' . rand(100, 300) . 'px';
+            
             array_push($articles_info, $json);
         }
-        
+
         echo json_encode($articles_info);
     }
 

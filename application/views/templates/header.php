@@ -49,9 +49,7 @@
     <div class="col col-lg-12">
       <div class="row">
         <div class="col col-lg-2">
-          <strong>Gather news</strong><br />
-          <img src="img/fb.png" height="35px" style="margin-bottom:5px"/>
-          <img src="img/twitter.png" height="35px" />
+
 
           
         </div>
@@ -98,7 +96,6 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">The Social Times</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -113,14 +110,15 @@
 
                 <ul class="nav navbar-nav navbar-right">
                  
-                  <li class="dropdown">
+                  <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Login</a></li>
                       <li><a href="#">Logout</a></li>
 
                     </ul>
-                  </li>
+                  </li>-->
+                  
                 </ul>
               </div><!-- /.navbar-collapse -->
             </nav>
