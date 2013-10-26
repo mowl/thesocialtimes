@@ -17,6 +17,7 @@ class News extends CI_Controller {
                 $hash = substr($line, 0, 32);
 
                 if ($hash == $token) {
+                    fclose($fp);
                     return substr($line, 33);
                 }
             }
@@ -25,7 +26,7 @@ class News extends CI_Controller {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_Setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_NOBODY, true);
         curl_exec($ch);
 
@@ -33,11 +34,12 @@ class News extends CI_Controller {
         $url_for_cache = $info['url'];
 
         fwrite($fp, $token . '|' . $url_for_cache . "\r\n");
+        fclose($fp);
         return $url_for_cache;
     }
 
     private $_blacklist = array(
-        't', 'twitter', 'instagram', 'facebook', 'fb', 'pinterest', 'tinyurl', 'tumblr', 'linkedin'
+        't', 'twitter', 'instagram', 'facebook', 'fb', 'pinterest', 'tinyurl', 'tumblr', 'linkedin', 'dribbble'
     );
 
     private function is_blacklisted_url($url) {
@@ -87,7 +89,7 @@ class News extends CI_Controller {
                     $articles = array();
                     
                     foreach ($tweets as $tweet) {
-                        if ($i == 15)
+                        if ($i == 10)
                             break;
 
                         if ($tweet->text) {
@@ -97,7 +99,7 @@ class News extends CI_Controller {
                             if (count($matches) && (count($matches[0]) == 1)) {
                                 $m = $matches[0][0];
                                 if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
-
+                                    
                                     $resolved = $this->resolve_url($m);
 
                                     if (!$this->is_blacklisted_url($resolved)) {
@@ -116,7 +118,18 @@ class News extends CI_Controller {
                 }
             }
 
-            $data = array('articles' => $articles);
+            $articles_info = array();
+            
+            if (isset($articles)) {
+                foreach ($articles as $article) {
+                    $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article) .'&maxwidth=500&maxheight=700&format=json';
+                    $json = json_decode(file_get_contents($url));
+                    
+                    array_push($articles_info, $json);
+                }
+            }
+            
+            $data = array('articles' => $articles_info);
             $this->load->view('news', $data);
         }
     }

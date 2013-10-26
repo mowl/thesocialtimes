@@ -29,7 +29,7 @@ class Home extends CI_Controller {
                     header('Location: ' . $url);
                     break;
                 default:
-                    echo "Coonection with twitter Failed";
+                    echo "Connection with Twitter failed";
                     break;
             }
         } else { //error receiving request token
