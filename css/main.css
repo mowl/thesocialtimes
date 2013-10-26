@@ -2,7 +2,7 @@
 /**
  * Grid container
  */
-#tiles {
+ #tiles {
   list-style-type: none;
   position: relative; /** Needed to ensure items are laid out relative to this container **/
   margin: 0;
@@ -12,12 +12,12 @@
 /**
  * Grid items
  */
-#tiles li {
+ #tiles li {
   width: 200px;
-background: rgba(255,255,255,0.7)
+  background: rgba(255,255,255,0.7);
   border: 1px solid #dedede;
-          border-radius: 2px;
-     -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   display: none; /** Hide items initially to avoid a flicker effect **/
 
@@ -39,7 +39,7 @@ background: rgba(255,255,255,0.7)
 /**
  * Grid item text
  */
-#tiles li p {
+ #tiles li p {
   color: #666;
   font-size: 12px;
   margin: 7px 0 0 7px;
@@ -48,9 +48,9 @@ background: rgba(255,255,255,0.7)
 /**
  * Placerholder css
  */
-.wookmark-placeholder {
-          border-radius: 2px;
-     -moz-border-radius: 2px;
+ .wookmark-placeholder {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   background-color: #eee;
   border: 1px solid #dedede;
