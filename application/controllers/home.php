@@ -5,15 +5,17 @@ if (!defined('BASEPATH'))
 
 class Home extends CI_Controller {
 
-    public function index() {
-
+    public function link_twitter() {
         $cfg = array(
             'consumer_key' => $this->config->item('t_key'),
             'consumer_secret' => $this->config->item('t_secret')
         );
         $this->load->library('twitteroauth', $cfg);
 
-        $request_token = $this->twitteroauth->getRequestToken('http://localhost:8080/thesocialtimes/news'); //get Request Token
+        $callback = $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+        $callback = str_replace('/home/link_twitter', '', $callback);
+        
+        $request_token = $this->twitteroauth->getRequestToken('http://' . $callback . '/news'); //get Request Token
 
         if ($request_token) {
             $token = $request_token['oauth_token'];
@@ -35,8 +37,13 @@ class Home extends CI_Controller {
         } else { //error receiving request token
             echo "Error Receiving Request Token";
         }
+    }
 
+    public function index() {
+
+        $data = array('link_twitter' => base_url('home/link_twitter'));
         $this->load->view('home', $data);
+        
     }
 
 }
