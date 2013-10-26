@@ -20,8 +20,11 @@
 
                             <p style="font-size:11px;padding-right:5px">{{art.description}}</p>
                             <p style="font-weight:300;font-size:11px;">Shared by </p>
-                            <p class="tooltip-demo" style="margin-bottom:50px"><img data-toggle="tooltip" title="Fritz Hoste" src="img/profilepic.jpg" style="float:left;width:30px;" />
+                            
+                            <p class="tooltip-demo" style="margin-bottom:50px">
+                                <img data-toggle="tooltip" title="{{user_info(art.to_resolve).name}}" ng-src="{{user_info(art.to_resolve).profile_picture}}" style="float:left;width:30px;" />
                             </p>
+                            
                             <hr style="width:102%;margin-top:20px;margin-bottom:0px;margin-left:-5px" />
                             <a ng-href="{{art.original_url}}"><p style="margin-bottom:5px;">
                                     <img src="{{art.favicon_url}}" style="width:15px;float:left" /> 
@@ -47,4 +50,5 @@
 <script>
     var urls = <?php echo json_encode($urls); ?>;
     var config = {base_url: "<?php echo base_url(); ?>"};
+    var extra_info = <?php echo json_encode($extra_info); ?>;
 </script>
