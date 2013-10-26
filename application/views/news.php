@@ -5,7 +5,7 @@
 
 
 			<div ng-hide='articles_loaded'>
-				<h1 class="loadingfeest">Loading your articles</h1>
+				<h1 class="loadingfeest">Loading your articlessss</h1>
 			<div id="loaderImage"></div> 
 			</div>
 
