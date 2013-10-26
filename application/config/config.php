@@ -360,3 +360,9 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+/*
+ * Facebook Shizzle
+ */
+$config['fb_key'] = '174121859455842';
+$config['fb_secret'] = '58aa1503ca4a12b1e73dc57ef969918f';
