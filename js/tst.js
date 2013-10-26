@@ -25,7 +25,7 @@ function TheSocialTimes($scope, $http) {
                 container: $('#tiles'), // Optional, used for some extra CSS styling
                 offset: 5, // Optional, the distance between grid items
                 outerOffset: 20, // Optional the distance from grid to parent
-                flexibleWidth: 350 // Optional, the maximum width of a grid item
+                flexibleWidth: 350  // Optional, the maximum width of a grid item
             };
 
             // Get a reference to your grid items.
