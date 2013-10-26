@@ -46,7 +46,7 @@ class Home extends CI_Controller {
 
         $data = array('link_twitter' => base_url('home/link_twitter'));
         $this->load->view('home', $data);
-        
+    
     }
 
 }

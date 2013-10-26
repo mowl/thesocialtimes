@@ -100,6 +100,8 @@ class News extends CI_Controller {
             else
                 $json->random_height = '' . rand(100, 300) . 'px';
             
+            $json->origin = $article;
+            
             array_push($articles_info, $json);
         }
 

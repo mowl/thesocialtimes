@@ -12,6 +12,7 @@
 <!-- Include the plug-in -->
 <script src="jquery.wookmark.js"></script>
 
+<script src="<?php echo base_url('js/lscache.js'); ?>"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 <script src="<?php echo base_url('js/tst.js'); ?>"></script>
 
