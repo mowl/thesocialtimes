@@ -1,4 +1,3 @@
-<?php
-
-print_r($articles);
-?>
+<script>
+var articles = <?php echo json_encode($articles); ?>;
+</script>
