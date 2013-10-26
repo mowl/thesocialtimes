@@ -3,4 +3,4 @@ TheSocialTimes
 
 TechCrunch Hackaton
 
-// More to come once the awesome is initialized!
+More to come once the awesome is initialized!
