@@ -26,7 +26,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'probablytheweakestencryptionkeyintheworld';
 
 /*
 |--------------------------------------------------------------------------
@@ -366,3 +366,7 @@ $config['proxy_ips'] = '';
  */
 $config['fb_key'] = '174121859455842';
 $config['fb_secret'] = '58aa1503ca4a12b1e73dc57ef969918f';
+
+$config['t_key'] = 'uMEPQD0MG4qAxDGFJXTEQ';
+$config['t_secret'] = 'aNtoc61FYLiAWTWGHMwWKz38SZoy5a8QG31p87j5s';
+$config['oauth_callback'] = '';
