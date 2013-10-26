@@ -116,7 +116,7 @@ class News extends CI_Controller {
                 }
             }
 
-            $data = array('articles', $articles);
+            $data = array('articles' => $articles);
             $this->load->view('news', $data);
         }
     }
