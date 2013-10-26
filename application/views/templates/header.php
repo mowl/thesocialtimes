@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
 

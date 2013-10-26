@@ -58,6 +58,46 @@ class News extends CI_Controller {
         return true; // if ever?!
     }
 
+    public function resolve() {
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Content-type: application/json');
+
+        if (!isset($_POST['urls']))
+            die();
+
+        $urls = json_decode($_POST['urls']);
+        $res = array();
+
+        $i = 0;
+        foreach ($urls as $m) {
+            if ($i == 10)
+                break;
+
+            if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
+
+                $resolved = $this->resolve_url($m);
+
+                if (!$this->is_blacklisted_url($resolved)) {
+
+                    array_push($res, $resolved);
+                    $i++;
+                }
+            }
+        }
+
+        $articles_info = array();
+
+        foreach ($res as $article) {
+            $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article) . '&maxwidth=500&maxheight=700&format=json';
+            $json = json_decode(file_get_contents($url));
+
+            array_push($articles_info, $json);
+        }
+        
+        echo json_encode($articles_info);
+    }
+
     public function index() {
         // $this->load->library('facebook', array('appId' => $this->config->item('fb_key'), 'secret' => $this->config->item('fb_secret')));
         // $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url('news/logout')));
@@ -73,6 +113,8 @@ class News extends CI_Controller {
             $this->load->library('twitteroauth', $cfg);
 
             $access_token = $this->twitteroauth->getAccessToken($_REQUEST['oauth_verifier']);
+            $urls = array();
+
             if ($access_token) {
                 $params = array();
                 $params['include_entities'] = 0;
@@ -84,31 +126,14 @@ class News extends CI_Controller {
                     $params['include_entities'] = 1;
                     $tweets = $this->twitteroauth->get('statuses/home_timeline', $params);
 
-                    $i = 0;
-
-                    $articles = array();
-                    
                     foreach ($tweets as $tweet) {
-                        if ($i == 10)
-                            break;
-
                         if ($tweet->text) {
                             preg_match_all('((https?|ftp|gopher|telnet|file|notes|ms-help):' .
                                     '((//)|(\\\\))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)', $tweet->text, $matches, PREG_PATTERN_ORDER);
 
                             if (count($matches) && (count($matches[0]) == 1)) {
                                 $m = $matches[0][0];
-                                /*if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
-                                    
-                                    $resolved = $this->resolve_url($m);
-
-                                    if (!$this->is_blacklisted_url($resolved)) {
-                                        
-                                        array_push($articles, $resolved);
-                                        
-                                        $i++;
-                                    }
-                                }*/
+                                array_push($urls, $m);
                             }
                         }
                     }
@@ -118,22 +143,10 @@ class News extends CI_Controller {
                 }
             }
 
-            $articles_info = array();
-            
-            if (isset($articles)) {
-                foreach ($articles as $article) {
-                    $url = 'http://api.embed.ly/1/extract?key=6ea607da81da4c86b00cef510798fe2a&url=' . urlencode($article) .'&maxwidth=500&maxheight=700&format=json';
-                    $json = json_decode(file_get_contents($url));
-                    
-                    array_push($articles_info, $json);
-                }
-            }
-            
-            $data = array('articles' => $articles_info);
+            $data = array('urls' => $urls);
             $this->load->view('templates/header');
             $this->load->view('news', $data);
-             $this->load->view('templates/footer');
-
+            $this->load->view('templates/footer');
         }
     }
 

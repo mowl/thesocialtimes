@@ -13,7 +13,7 @@ class Home extends CI_Controller {
         );
         $this->load->library('twitteroauth', $cfg);
 
-        $request_token = $this->twitteroauth->getRequestToken('http://localhost:8080/thesocialtimes/news'); //get Request Token
+        $request_token = $this->twitteroauth->getRequestToken('http://thesocialtimes.hax:8080/news'); //get Request Token
 
         if ($request_token) {
             $token = $request_token['oauth_token'];
