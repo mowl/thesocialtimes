@@ -138,7 +138,7 @@ class News extends CI_Controller {
 
                 if ($content && isset($content->screen_name) && isset($content->name)) {
 
-                    $params['count'] = 100;
+                    $params['count'] = 600;
                     $params['include_entities'] = 1;
                     $tweets = $this->twitteroauth->get('statuses/home_timeline', $params);
 
