@@ -53,6 +53,8 @@ body {
 
 }
 .loadingfeest {
+	font-family: Verdana, sans-serif;
+		padding-top: 30px;
 	font-size: 50px;
 	text-align: center;
 	text-transform: uppercase;
@@ -61,9 +63,9 @@ color: #fff;
 
 }
 .loader {
-	padding-top: 50px;
+
+
 	
-	font-family: Verdana, sans-serif;
 	
 
 }
