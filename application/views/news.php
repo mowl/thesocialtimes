@@ -15,7 +15,7 @@
                     <ul id="tiles">
                         <li ng-repeat="art in articles">
 
-                            <p style="font-weight:bold; font-size: 17px; margin-bottom: 4px;">{{art.title}}</p>
+                            <p style="font-weight:300; font-size: 16px; margin-bottom: 4px;">{{art.title}}</p>
                             <div ng-style="{'background-image':'url('+art.images[0].url+')', 'height':art.random_height}" style='background-position:center; background-size: cover;'></div>
 
                             <p style="font-size:11px;padding-right:5px">{{art.description}}</p>

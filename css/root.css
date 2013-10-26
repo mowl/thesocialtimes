@@ -49,13 +49,12 @@ body {
 
 
 
-
-
 }
 .loadingfeest {
 	font-family: Verdana, sans-serif;
 		padding-top: 30px;
-	font-size: 50px;
+	font-size: 40px;
+	opacity: 0.9;
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: 800;

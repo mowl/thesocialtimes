@@ -34,6 +34,12 @@ function TheSocialTimes($scope, $http) {
 
             // Call the layout function.
             handler.wookmark(options);
+            
+             $('.tooltip-demo').tooltip({
+              selector: "[data-toggle=tooltip]",
+              container: "body"
+            });
+    
         });
 
         request.fail(function(jqXHR, textStatus, errorThrown) {

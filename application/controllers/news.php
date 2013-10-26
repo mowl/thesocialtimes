@@ -122,7 +122,7 @@ class News extends CI_Controller {
             );
             $this->load->library('twitteroauth', $cfg);
 
-            $access_token = $this->twitteroauth->getAccessToken($_REQUEST['oauth_verifier']);
+            $access_token = @$this->twitteroauth->getAccessToken($_REQUEST['oauth_verifier']);
             $urls = array();
 
             if ($access_token) {
@@ -151,7 +151,8 @@ class News extends CI_Controller {
                     // Re-authenticate
                     redirect('home');
                 }
-            }
+            } 
+            
 
             $data = array('urls' => $urls);
             $this->load->view('templates/header');
