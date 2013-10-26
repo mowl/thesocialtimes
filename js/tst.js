@@ -15,8 +15,6 @@ function TheSocialTimes($scope, $http) {
         request.done(function(response) {
             $scope.articles = response;
             $scope.articles_loaded = true;
-            console.log($scope.articles);
-
 
             $scope.$apply();
 
