@@ -71,7 +71,7 @@ class News extends CI_Controller {
 
         $i = 0;
         foreach ($urls as $m) {
-            if ($i == 10)
+            if ($i == 2)
                 break;
 
             if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
