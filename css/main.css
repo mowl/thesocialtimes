@@ -35,6 +35,10 @@
 #tiles li img {
   display: block;
 }
+#tiles li a:hover {
+  text-decoration: none;
+  
+}
 
 /**
  * Grid item text

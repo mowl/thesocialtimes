@@ -6,7 +6,7 @@
 
             <div ng-hide='articles_loaded'>
                 <h1 class="loadingfeest">Loading your articles</h1>
-               <img src="img/twload.GIF" align="middle" />
+               <center><img src="img/twload.GIF" align="middle" /></center>
             </div>
 
             <div ng-show='articles_loaded'>
@@ -15,8 +15,8 @@
                     <ul id="tiles">
                         <li ng-repeat="art in articles" >
 
-                            <a ng-click="set_active_item(art)" data-toggle="modal" href="#myModal"><p style="font-weight:500; font-size: 16px; margin-bottom: 4px;">{{art.title}}</p></a>
-                            <div ng-style="{'background-image':'url('+art.images[0].url+')', 'height':art.random_height}" style='background-position:center; background-size: cover;'></div>
+                            <a ng-click="set_active_item(art)" data-toggle="modal" href="#myModal"><p style="font-weight:500; font-size: 16px; margin-bottom: 4px;">{{art.title}}</p>
+                            <div  ng-style="{'background-image':'url('+art.images[0].url+')', 'height':art.random_height}" style='background-position:center; background-size: cover;'></div></a>
 
                             <p style="font-size:11px;padding-right:5px;">{{art.description}}</p>
                             <p style="font-weight:300;font-size:11px;">Shared by </p>
@@ -31,7 +31,7 @@
                                     <span style="color:#b3b3b3;padding-left:10px;font-size:10px">
                                         {{art.provider_name}}
                                     </span>
-                                    <span class="pull-right">{{art.published | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                                    <span class="pull-right">{{art.published | date:'yyyy-MM-dd HH:mm'}}</span>
                                 </p>
                             </a>
 
