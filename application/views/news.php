@@ -6,7 +6,7 @@
 
             <div ng-hide='articles_loaded'>
                 <h1 class="loadingfeest">Loading your articles</h1>
-                <img src="img/twload.GIF" align="middle" />
+                <center><img src="img/twload.GIF" align="middle" /></center>
             </div>
 
             <div ng-show='articles_loaded'>
