@@ -39,7 +39,7 @@ class News extends CI_Controller {
     }
 
     private $_blacklist = array(
-        't', 'twitter', 'instagram', 'facebook', 'fb', 'pinterest', 'tinyurl', 'tumblr', 'linkedin', 'dribbble'
+        't', 'twitter', 'instagram', 'facebook', 'fb', 'foursquare', 'pinterest', 'tinyurl', 'tumblr', 'linkedin', 'dribbble'
     );
 
     private function is_blacklisted_url($url) {

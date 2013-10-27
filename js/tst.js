@@ -1,7 +1,12 @@
 function TheSocialTimes($scope, $http) {
 
     $scope.urls = urls;
-    
+    $scope.active_item = {};
+
+    $scope.set_active_item = function(art){
+        $scope.active_item = art;
+        
+    }
     $scope.user_info = function(art) {
         console.log(art);
         console.log(extra_info[art]);
@@ -21,6 +26,8 @@ function TheSocialTimes($scope, $http) {
         request.done(function(response) {
             $scope.articles = response;
             $scope.articles_loaded = true;
+            console.log($scope.articles);
+          
 
             $scope.$apply();
 

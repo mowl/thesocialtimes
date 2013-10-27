@@ -57,15 +57,12 @@ body {
 	opacity: 0.9;
 	text-align: center;
 	text-transform: uppercase;
-	font-weight: 800;
+	font-weight: 300;
 color: #222;
 
 }
-.loader {
-
-
-	
-	
+.modal-dialog img {
+max-width: 720px;
 
 }
 .sharepic {
