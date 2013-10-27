@@ -71,7 +71,7 @@ class News extends CI_Controller {
 
         $i = 0;
         foreach ($urls as $m) {
-            if ($i == 150)
+            if ($i == 30)
                 break;
 
             if (filter_var($m, FILTER_VALIDATE_URL) && (substr($m, 0, 8) !== "https://")) {
@@ -99,6 +99,9 @@ class News extends CI_Controller {
                 continue;
             $json = json_decode($data);
 
+            if (empty($json->title))
+                continue;
+            
             if (!isset($json->images[0]))
                 $json->random_height = '0px';
             else
@@ -118,7 +121,7 @@ class News extends CI_Controller {
 
         if (isset($_GET['oauth_token'])) {
 
-            echo  $this->session->userdata('request_token');
+            //echo  $this->session->userdata('request_token');
             $cfg = array(
                 'consumer_key' => $this->config->item('t_key'),
                 'consumer_secret' => $this->config->item('t_secret'),

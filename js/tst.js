@@ -8,7 +8,12 @@ function TheSocialTimes($scope, $http) {
         return extra_info[art];
     };
 
-    var counter = 0;
+    $scope.active_item = {};
+    
+    $scope.set_active_item = function(item) {
+        $scope.active_item = item;
+    }
+
     $scope.get_link_set = function() {
 
         var url = config.base_url + 'news/resolve';
