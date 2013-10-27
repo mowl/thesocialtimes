@@ -83,7 +83,7 @@ class News extends CI_Controller {
                     $o = new stdClass();
                     $o->resolved = $resolved;
                     $o->to_resolve = $m;
-                    
+
                     array_push($res, $o);
                     $i++;
                 }
@@ -103,9 +103,9 @@ class News extends CI_Controller {
                 $json->random_height = '0px';
             else
                 $json->random_height = '' . rand(100, 300) . 'px';
-            
+
             $json->to_resolve = $article->to_resolve;
-            
+
             array_push($articles_info, $json);
         }
 
@@ -118,6 +118,7 @@ class News extends CI_Controller {
 
         if (isset($_GET['oauth_token'])) {
 
+            echo  $this->session->userdata('request_token');
             $cfg = array(
                 'consumer_key' => $this->config->item('t_key'),
                 'consumer_secret' => $this->config->item('t_secret'),
@@ -127,11 +128,16 @@ class News extends CI_Controller {
             $this->load->library('twitteroauth', $cfg);
 
             $access_token = @$this->twitteroauth->getAccessToken($_REQUEST['oauth_verifier']);
-            
+
             $urls = array();
             $extra_info = array();
-            
+
             if ($access_token) {
+
+                /* $cfg['request_token'] = $access_token['oauth_token'];
+                  $cfg['request_token_secret'] = $access_token['oauth_token_secret'];
+                  $this->load->library('twitteroauth', $cfg); */
+
                 $params = array();
                 $params['include_entities'] = 0;
                 $content = $this->twitteroauth->get('account/verify_credentials', $params);
@@ -149,22 +155,22 @@ class News extends CI_Controller {
 
                             if (count($matches) && (count($matches[0]) == 1)) {
                                 $m = $matches[0][0];
-                            
+
                                 $o = new stdClass();
-                                
+
                                 $o->name = $tweet->user->name;
                                 $o->location = $tweet->user->location;
                                 $o->profile_picture = $tweet->user->profile_image_url;
-                                
+
                                 $extra_info[$m] = $o;
-                            
+
                                 array_push($urls, $m);
                             }
                         }
                     }
                 } else {
                     // Re-authenticate
-                    redirect('home');
+                    redirect('home/link_twitter');
                 }
             }
 
