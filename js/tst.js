@@ -1,33 +1,29 @@
 function TheSocialTimes($scope, $http) {
 
     $scope.urls = urls;
-    $scope.active_item = {};
 
-    $scope.set_active_item = function(art){
-        $scope.active_item = art;
-        
-    }
     $scope.user_info = function(art) {
         console.log(art);
         console.log(extra_info[art]);
         return extra_info[art];
     };
-    
-    $scope.init = function() {
+
+    var counter = 0;
+    $scope.get_link_set = function() {
 
         var url = config.base_url + 'news/resolve';
+
+        var data = $scope.urls;
 
         var request = $.ajax({
             url: url,
             type: "post",
-            data: {urls: JSON.stringify($scope.urls)}
+            data: {urls: JSON.stringify(data)}
         });
 
         request.done(function(response) {
             $scope.articles = response;
             $scope.articles_loaded = true;
-            console.log($scope.articles);
-          
 
             $scope.$apply();
 
@@ -45,12 +41,12 @@ function TheSocialTimes($scope, $http) {
 
             // Call the layout function.
             handler.wookmark(options);
-            
-             $('.tooltip-demo').tooltip({
-              selector: "[data-toggle=tooltip]",
-              container: "body"
+
+            $('.tooltip-demo').tooltip({
+                selector: "[data-toggle=tooltip]",
+                container: "body"
             });
-    
+
         });
 
         request.fail(function(jqXHR, textStatus, errorThrown) {
@@ -58,5 +54,9 @@ function TheSocialTimes($scope, $http) {
             console.error("Ajax Error: " + textStatus, errorThrown);
         });
 
+    };
+
+    $scope.init = function() {
+        $scope.get_link_set();
     };
 }
