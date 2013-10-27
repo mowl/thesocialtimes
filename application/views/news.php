@@ -15,22 +15,23 @@
                     <ul id="tiles">
                         <li ng-repeat="art in articles" >
 
-                            <a ng-click="set_active_item(art)" data-toggle="modal" href="#myModal"><p style="font-weight:300; font-size: 16px; margin-bottom: 4px;">{{art.title}}</p></a>
+                            <a ng-click="set_active_item(art)" data-toggle="modal" href="#myModal"><p style="font-weight:500; font-size: 16px; margin-bottom: 4px;">{{art.title}}</p></a>
                             <div ng-style="{'background-image':'url('+art.images[0].url+')', 'height':art.random_height}" style='background-position:center; background-size: cover;'></div>
 
-                            <p style="font-size:11px;padding-right:5px">{{art.description}}</p>
+                            <p style="font-size:11px;padding-right:5px;">{{art.description}}</p>
                             <p style="font-weight:300;font-size:11px;">Shared by </p>
                             
                             <p class="tooltip-demo" style="margin-bottom:50px">
                                 <img data-toggle="tooltip" title="{{user_info(art.to_resolve).name}}" ng-src="{{user_info(art.to_resolve).profile_picture}}" style="float:left;width:30px;" />
                             </p>
                             
-                            <hr style="width:102%;margin-top:20px;margin-bottom:0px;margin-left:-5px" />
+                            <hr style="width:103%;margin-top:20px;margin-bottom:0px;margin-left:-5px" />
                             <a ng-href="{{art.original_url}}"><p style="margin-bottom:5px;">
                                     <img src="{{art.favicon_url}}" style="width:15px;float:left" /> 
                                     <span style="color:#b3b3b3;padding-left:10px;font-size:10px">
                                         {{art.provider_name}}
                                     </span>
+                                    <span class="pull-right">{{art.published | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                                 </p>
                             </a>
 

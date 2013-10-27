@@ -45,7 +45,10 @@ class Home extends CI_Controller {
     public function index() {
 
         $data = array('link_twitter' => base_url('home/link_twitter'));
-        $this->load->view('home', $data);
+           $this->load->view('templates/header');
+            $this->load->view('home', $data);
+            $this->load->view('templates/footer');
+     
     
     }
 
