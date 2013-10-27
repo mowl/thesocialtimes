@@ -3,12 +3,9 @@ function TheSocialTimes($scope, $http) {
     $scope.urls = urls;
 
     $scope.user_info = function(art) {
-        console.log(art);
-        console.log(extra_info[art]);
         return extra_info[art];
     };
 
-    var counter = 0;
     $scope.get_link_set = function() {
 
         var url = config.base_url + 'news/resolve';
